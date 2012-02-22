@@ -11,5 +11,10 @@ namespace Project1
         {
 
         }
+
+	public static void Method()
+	{
+	    Console.WriteLine("Hello World!");
+	}
     }
 }
