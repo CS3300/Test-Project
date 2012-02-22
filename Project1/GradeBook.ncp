@@ -1,0 +1,95 @@
+<Project>
+  <Name>GradeBook</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Student</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Student</Name>
+        <Access>Public</Access>
+        <Location left="380" top="142" />
+        <Size width="312" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">string email</Member>
+        <Member type="Field">string firstname</Member>
+        <Member type="Field">string lastname</Member>
+        <Member type="Field">int studentID</Member>
+        <Member type="Field">double score</Member>
+        <Member type="Property">public string Email { get; }</Member>
+        <Member type="Property">public string Firstname { get; }</Member>
+        <Member type="Property">public int ID { get; }</Member>
+        <Member type="Property">public string Lastname { get; }</Member>
+        <Member type="Constructor">public Student(string firstname, string lastname)</Member>
+        <Member type="Constructor">public Student(string firstname, string lastname, string email)</Member>
+        <Member type="Property">public double Score { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>The student's grade is a representation of the raw data associated with the overall score the
+student has earned; i.e. score.
+
+Representations such as percentage and letter grade will be displayed outside of this class, since the professor should be able to decide the final grade of the student after bell curves, etc.</Text>
+        <Location left="719" top="142" />
+        <Size width="248" height="166" />
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Assignment</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Assignment</Name>
+        <Access>Public</Access>
+        <Location left="259" top="118" />
+        <Size width="318" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int assignmentID</Member>
+        <Member type="Field">string description</Member>
+        <Member type="Field">string title</Member>
+        <Member type="Constructor">public Assignment(string title, string description)</Member>
+        <Member type="Property">public string Description { get; set; }</Member>
+        <Member type="Property">public int ID { get; set; }</Member>
+        <Member type="Property">public string Title { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>System</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Distribution</Name>
+        <Access>Public</Access>
+        <Location left="98" top="66" />
+        <Size width="226" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">List&lt;DistributionItem&gt; distribution</Member>
+        <Member type="Constructor">public Distribution()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>The distribution class is used on a system level in order to determine how grade distribution is calculated for the students.
+
+For example, the professor can use a configuration file to set homework to be 30% of the student's grade, 20% for exams, etc.</Text>
+        <Location left="350" top="84" />
+        <Size width="291" height="198" />
+      </Entity>
+      <Entity type="Class">
+        <Name>DistributionItem</Name>
+        <Access>Public</Access>
+        <Location left="350" top="300" />
+        <Size width="293" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">double percentage</Member>
+        <Member type="Field">string title</Member>
+        <Member type="Field">string description</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+</Project>
