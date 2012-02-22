@@ -7,33 +7,87 @@
       <Entity type="Class">
         <Name>Student</Name>
         <Access>Public</Access>
-        <Location left="380" top="142" />
-        <Size width="312" height="281" />
+        <Location left="467" top="190" />
+        <Size width="312" height="378" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">StudentDegree degree</Member>
         <Member type="Field">string email</Member>
         <Member type="Field">string firstname</Member>
         <Member type="Field">string lastname</Member>
+        <Member type="Field">string note</Member>
+        <Member type="Field">StudentScore score</Member>
         <Member type="Field">int studentID</Member>
-        <Member type="Field">double score</Member>
+        <Member type="Property">public StudentDegree Degree { get; set; }</Member>
         <Member type="Property">public string Email { get; }</Member>
         <Member type="Property">public string Firstname { get; }</Member>
         <Member type="Property">public int ID { get; }</Member>
         <Member type="Property">public string Lastname { get; }</Member>
+        <Member type="Property">public string Note { get; set; }</Member>
+        <Member type="Property">public double Score { get; set; }</Member>
         <Member type="Constructor">public Student(string firstname, string lastname)</Member>
         <Member type="Constructor">public Student(string firstname, string lastname, string email)</Member>
-        <Member type="Property">public double Score { get; set; }</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Comment">
-        <Text>The student's grade is a representation of the raw data associated with the overall score the
-student has earned; i.e. score.
+        <Text>Notes:
 
-Representations such as percentage and letter grade will be displayed outside of this class, since the professor should be able to decide the final grade of the student after bell curves, etc.</Text>
-        <Location left="719" top="142" />
-        <Size width="248" height="166" />
+The student's grade is represented by the overall score the student has earned; e.g. the score is equivalent to (points earned / points available).
+
+Therefore, the grade representations such as a percentage value or a specific letter grade will be calculated and displayed outside of this class, primarily because the professor should have the ability to decide the final grade of the student after mathematical models such as bell curves, weighted grades, seperating students of different grade levels, that chick is really hot, etc.
+
+The student's overall score is stored as a hashtable of assignment id's (key) and points earned for the assignment (value).
+
+The professor should also be able to make a note about a particular student, if desired.
+
+</Text>
+        <Location left="829" top="190" />
+        <Size width="264" height="378" />
+      </Entity>
+      <Entity type="Enum">
+        <Name>StudentDegree</Name>
+        <Access>Public</Access>
+        <Location left="253" top="190" />
+        <Size width="162" height="130" />
+        <Collapsed>False</Collapsed>
+        <Value>Graduate</Value>
+        <Value>Undergraduate</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>StudentScore</Name>
+        <Access>Public</Access>
+        <Location left="122" top="352" />
+        <Size width="294" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Hashtable scores</Member>
+        <Member type="Method">public void EditScore(int assignmentID, double points)</Member>
+        <Member type="Method">public void AddScore(int assignmentID, double points)</Member>
+        <Modifier>None</Modifier>
       </Entity>
     </Entities>
-    <Relationships />
+    <Relationships>
+      <Relationship type="Association" first="2" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>440</X>
+          <Y>215</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>442</X>
+          <Y>215</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+    </Relationships>
   </ProjectItem>
   <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
     <Name>Assignment</Name>
@@ -42,20 +96,58 @@ Representations such as percentage and letter grade will be displayed outside of
       <Entity type="Class">
         <Name>Assignment</Name>
         <Access>Public</Access>
-        <Location left="259" top="118" />
-        <Size width="318" height="216" />
+        <Location left="472" top="118" />
+        <Size width="318" height="355" />
         <Collapsed>False</Collapsed>
         <Member type="Field">int assignmentID</Member>
         <Member type="Field">string description</Member>
         <Member type="Field">string title</Member>
+        <Member type="Field">DateTime created</Member>
+        <Member type="Field">DateTime due</Member>
+        <Member type="Field">AssignmentType type</Member>
+        <Member type="Field">double availablePoints</Member>
         <Member type="Constructor">public Assignment(string title, string description)</Member>
         <Member type="Property">public string Description { get; set; }</Member>
         <Member type="Property">public int ID { get; set; }</Member>
         <Member type="Property">public string Title { get; set; }</Member>
+        <Member type="Method">public void ExtendDueDate(DateTime extension)</Member>
+        <Member type="Property">public AssignmentType Type { get; set; }</Member>
+        <Member type="Property">public double AvailablePoints { get; set; }</Member>
         <Modifier>None</Modifier>
       </Entity>
+      <Entity type="Comment">
+        <Text>Notes:
+
+The assignment may be of different types. This will play a significant role when the professor chooses to use a weighted grading system; e.g. Homework is 30% of the final grade, Participation is 10%, etc.</Text>
+        <Location left="828" top="118" />
+        <Size width="282" height="167" />
+      </Entity>
+      <Entity type="Enum">
+        <Name>AssignmentType</Name>
+        <Access>Public</Access>
+        <Location left="264" top="118" />
+        <Size width="162" height="143" />
+        <Collapsed>False</Collapsed>
+        <Value>Homework</Value>
+        <Value>Participation</Value>
+        <Value>Exam</Value>
+        <Value>Project</Value>
+      </Entity>
     </Entities>
-    <Relationships />
+    <Relationships>
+      <Relationship type="Association" first="2" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>451</X>
+          <Y>141</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+    </Relationships>
   </ProjectItem>
   <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
     <Name>System</Name>
@@ -64,7 +156,7 @@ Representations such as percentage and letter grade will be displayed outside of
       <Entity type="Class">
         <Name>Distribution</Name>
         <Access>Public</Access>
-        <Location left="98" top="66" />
+        <Location left="105" top="84" />
         <Size width="226" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">List&lt;DistributionItem&gt; distribution</Member>
