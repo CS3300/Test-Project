@@ -1,0 +1,12 @@
+1. The system must store data in excel format.
+2. The system must support multiple gradebooks.
+3. The system must run on Windows XP, Vista, and 7.
+4. The system must support a configuration/preference file
+5. The system will not support multiple types of gradebooks.
+
+6. The student must have an ID, first and last name.
+7. The assignment must have an assignment id, creation date, due date, and description.
+8. The gradebook must support zero or more assignments.
+
+Assumptions:
+The professor is the only one who manages the application.
