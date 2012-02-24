@@ -96,7 +96,7 @@ The professor should also be able to make a note about a particular student, if 
       <Entity type="Class">
         <Name>Assignment</Name>
         <Access>Public</Access>
-        <Location left="472" top="118" />
+        <Location left="399" top="116" />
         <Size width="318" height="355" />
         <Collapsed>False</Collapsed>
         <Member type="Field">int assignmentID</Member>
@@ -119,13 +119,13 @@ The professor should also be able to make a note about a particular student, if 
         <Text>Notes:
 
 The assignment may be of different types. This will play a significant role when the professor chooses to use a weighted grading system; e.g. Homework is 30% of the final grade, Participation is 10%, etc.</Text>
-        <Location left="828" top="118" />
+        <Location left="755" top="116" />
         <Size width="282" height="167" />
       </Entity>
       <Entity type="Enum">
         <Name>AssignmentType</Name>
         <Access>Public</Access>
-        <Location left="264" top="118" />
+        <Location left="191" top="116" />
         <Size width="162" height="143" />
         <Collapsed>False</Collapsed>
         <Value>Homework</Value>
@@ -141,8 +141,8 @@ The assignment may be of different types. This will play a significant role when
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>451</X>
-          <Y>141</Y>
+          <X>378</X>
+          <Y>139</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -156,7 +156,7 @@ The assignment may be of different types. This will play a significant role when
       <Entity type="Class">
         <Name>Distribution</Name>
         <Access>Public</Access>
-        <Location left="105" top="84" />
+        <Location left="37" top="275" />
         <Size width="226" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">List&lt;DistributionItem&gt; distribution</Member>
@@ -164,22 +164,120 @@ The assignment may be of different types. This will play a significant role when
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Comment">
-        <Text>The distribution class is used on a system level in order to determine how grade distribution is calculated for the students.
+        <Text>Notes:
+
+The distribution class is used on a system level in order to determine how grade distribution is calculated for the students.
 
 For example, the professor can use a configuration file to set homework to be 30% of the student's grade, 20% for exams, etc.</Text>
-        <Location left="350" top="84" />
-        <Size width="291" height="198" />
+        <Location left="434" top="28" />
+        <Size width="291" height="216" />
       </Entity>
       <Entity type="Class">
         <Name>DistributionItem</Name>
         <Access>Public</Access>
-        <Location left="350" top="300" />
+        <Location left="26" top="28" />
         <Size width="293" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">double percentage</Member>
         <Member type="Field">string title</Member>
         <Member type="Field">string description</Member>
         <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>GradeBook</Name>
+        <Access>Public</Access>
+        <Location left="720" top="319" />
+        <Size width="291" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">List&lt;Student&gt; students</Member>
+        <Member type="Field">List&lt;Assignment&gt; assignments</Member>
+        <Member type="Field">Course course</Member>
+        <Member type="Field">int gradebookID</Member>
+        <Member type="Method">public void AddStudent(Student student)</Member>
+        <Member type="Property">public List&lt;Student&gt; Students { get; }</Member>
+        <Member type="Property">public List&lt;Assignment&gt; Assignments { get; }</Member>
+        <Member type="Method">public void AddAssignment(Assignment assignment)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Professor</Name>
+        <Access>Public</Access>
+        <Location left="743" top="28" />
+        <Size width="268" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">string email</Member>
+        <Member type="Field">string firstname</Member>
+        <Member type="Field">string lastname</Member>
+        <Member type="Field">List&lt;GradeBook&gt; gradebooks</Member>
+        <Member type="Property">public string Email { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Course</Name>
+        <Access>Public</Access>
+        <Location left="479" top="319" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">string description</Member>
+        <Member type="Field">int courseID</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="4" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="5" second="3">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Utilities</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Excel</Name>
+        <Access>Public</Access>
+        <Location left="89" top="96" />
+        <Size width="300" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static void import(GradeBook gradebook, string path)</Member>
+        <Member type="Method">public static void export(GradeBook gradebook, string path)</Member>
+        <Modifier>Static</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>Notes:
+
+Utilities are static so that they can be used anywhere in the program without the use of object initialization.</Text>
+        <Location left="736" top="96" />
+        <Size width="251" height="136" />
+      </Entity>
+      <Entity type="Class">
+        <Name>Network</Name>
+        <Access>Public</Access>
+        <Location left="89" top="335" />
+        <Size width="464" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static void SendEmail(List&lt;Student&gt; students, Assignment assignment, string message)</Member>
+        <Member type="Method">public static void SendEmail(List&lt;Student&gt; students, string message)</Member>
+        <Member type="Method">public static void SendEmail(Student student, StudentScore score)</Member>
+        <Member type="Method">public static void SendEmail(Student student, string message)</Member>
+        <Modifier>Static</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Debug</Name>
+        <Access>Public</Access>
+        <Location left="624" top="339" />
+        <Size width="189" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>Static</Modifier>
       </Entity>
     </Entities>
     <Relationships />
